@@ -7,7 +7,7 @@ wmname LG3D
 
 picom --config ${HOME}/.config/picom/picom.conf &
 ${HOME}/.fehbg &
-${HOME}/.screenlayout/default.sh &
-dwmblocks &
-xset s 3600 3600 -dpms &
+#${HOME}/.screenlayout/default.sh &
+#dwmblocks &
+xset s 3600 3600 -dpms & #power settings
 exec dwm
