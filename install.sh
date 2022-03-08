@@ -26,7 +26,7 @@ do
 done
 
 clear
-echo '\nInstall video drivers? [y/N]
+echo '\nInstall video drivers? [y/N]'
 read ans
 clear
 if [ $ans -eq 'y' ]
