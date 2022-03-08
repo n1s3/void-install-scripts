@@ -16,3 +16,5 @@ picom
 ranger
 xterm
 xorg-fonts
+wget
+python3-adblock
