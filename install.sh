@@ -1,17 +1,26 @@
 #!/bin/bash
 
-if [ 'whoami' != root ]
-then
-	echo "requires root, please run with root access"
-	exit	
-fi
-
-#installs git, it's probably installed already but why not. Now it's certainly installed.
-mkdir -p $HOME/Downloads && cd $HOME/Downloads
-xbps-install --yes git && git clone https://github.com/n1s3/void-install-scripts.git
-PKGS=$(cat $HOME/Downloads/void-install-scripts/pkgs.list)
+DOTF=$(cat .files)
+PKGS=$(cat pkgs.list)
 
 for PKG in $PKGS
 do
 	xbps-install --yes $PKG
+done
+
+echo -e 'Installing vim-plug... \n'
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+echo -e 'Installing dwm... \n'
+cd dwm && make clean install
+echo -e 'Installing dmenu... \n'
+cd .. && cd dmenu && make clean install
+cd ..
+
+echo -e 'Migrating dot files and configs... '
+
+for dotf in $DOTFILES
+do
+	cp -r dotf
 done
